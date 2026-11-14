@@ -57,7 +57,8 @@ export function Navbar() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  const onScene = !scrolled;
+  // Every page now opens on a light hero, so the bar always uses ink text.
+  const onScene = false;
 
   return (
     <>

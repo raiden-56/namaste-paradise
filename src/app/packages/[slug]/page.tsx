@@ -54,7 +54,7 @@ export default async function PackagePage({ params }: Props) {
         image={pkg.image}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Packages', href: '/packages' }, { label: pkg.name }]}
       >
-        {pkg.isPlaceholder && <Placeholder label="Timing and price confirmed on WhatsApp" onScene className="rise rise-4 mt-6" />}
+        {pkg.isPlaceholder && <Placeholder label="Timing and price confirmed on WhatsApp" className="mt-5" />}
       </PageHero>
 
       <section className="py-20 sm:py-28">

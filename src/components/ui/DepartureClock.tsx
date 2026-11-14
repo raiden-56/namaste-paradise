@@ -49,7 +49,7 @@ export function DepartureClock({ className, onScene = true }: { className?: stri
         <p className={cn('font-mono text-[10px] uppercase tracking-[0.18em]', muted)}>
           Next departure {state ? `· ${state.next}${state.tomorrow ? ' tmrw' : ''}` : ''}
         </p>
-        <p className="mt-1.5 font-mono text-[22px] leading-none tabular-nums text-aqua" aria-live="off">
+        <p className={cn('mt-1.5 font-mono text-[22px] leading-none tabular-nums', onScene ? 'text-aqua' : 'text-glow-ink')} aria-live="off">
           {state ? state.countdown : '--:--:--'}
         </p>
       </div>

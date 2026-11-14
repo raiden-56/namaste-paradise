@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://namasteparadisecruise.com
+Sitemap: https://namasteparadisecruise.com/sitemap.xml

@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Monsoon dusk — one warm neutral ramp + one ember accent             */
+/* Dark is the default; "daybreak" is the optional light theme.        */
+/* ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    /* Daybreak (light) */
+    --deep: 239 233 223;
+    --page: 247 244 238;
+    --card: 253 251 247;
+    --raised: 239 233 223;
+    --ink: 31 27 22;
+    --soft: 94 85 74;
+    --mute: 118 109 97;
+    --ember: 184 83 31;
+    --ember-ink: 160 70 22;
+    --on-ember: 255 255 255;
+    color-scheme: light;
+  }
+
+  .dark {
+    /* Dusk (default) */
+    --deep: 18 17 15;
+    --page: 22 21 19;
+    --card: 28 26 24;
+    --raised: 38 36 33;
+    --ink: 239 233 222;
+    --soft: 170 163 152;
+    --mute: 138 132 122;
+    --ember: 224 122 63;
+    --ember-ink: 234 145 94;
+    --on-ember: 22 21 19;
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 88px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  body {
+    @apply bg-page font-sans text-[15px] leading-[1.6] text-ink antialiased;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif font-normal text-ink;
+  }
+
+  ::selection {
+    background: rgb(var(--ember) / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--ember));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .dark input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.85);
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Section kicker: small, sentence case, ember ink — no tracked capitals */
+  .kicker {
+    @apply font-mono text-[13px] leading-5 text-ember-ink;
+  }
+
+  .hairline {
+    border-color: rgb(var(--ink) / 0.09);
+  }
+
+  .field {
+    @apply h-11 w-full rounded-control border bg-raised px-3.5 text-[15px] text-ink placeholder:text-mute;
+    border-color: rgb(var(--ink) / 0.1);
+    transition: border-color 160ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 160ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  textarea.field {
+    @apply h-auto py-3;
+  }
+  .field:focus {
+    outline: none;
+    border-color: rgb(var(--ember) / 0.7);
+    box-shadow: 0 0 0 3px rgb(var(--ember) / 0.18);
+  }
+  .field[aria-invalid='true'] {
+    border-color: rgb(var(--ember));
+  }
+
+  .link {
+    @apply text-ink underline decoration-1 underline-offset-4;
+    text-decoration-color: rgb(var(--ink) / 0.25);
+    transition: text-decoration-color 160ms;
+  }
+  .link:hover {
+    text-decoration-color: rgb(var(--ember));
+  }
+
+  /* The signature: an ember dashed route line */
+  .route-line {
+    stroke: rgb(var(--ember));
+    stroke-dasharray: 2 7;
+    stroke-linecap: round;
+    fill: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion                                                              */
+/* CSS-only hero entrance (works before/without JS, good for LCP/SEO). */
+/* Scroll reveals & parallax are added by <ScrollEffects/> with GSAP.  */
+/* ------------------------------------------------------------------ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes scene-in {
+  from { transform: scale(1.08); }
+  to { transform: none; }
+}
+@keyframes draw {
+  from { stroke-dashoffset: var(--len, 900); }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes glint-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-400px); }
+}
+@keyframes scroll-cue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .rise-1 { animation-delay: 80ms; }
+  .rise-2 { animation-delay: 140ms; }
+  .rise-3 { animation-delay: 200ms; }
+  .rise-4 { animation-delay: 260ms; }
+  .rise-5 { animation-delay: 420ms; }
+  .scene-in { animation: scene-in 2400ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .draw-in { stroke-dasharray: var(--len, 900); animation: draw 1800ms 500ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .glint-drift { animation: glint-drift 40s linear infinite; }
+  .scroll-cue { animation: scroll-cue 2400ms cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+}
+
+/* Route dots (HTML version of the signature line) */
+.route-dots {
+  height: 4px;
+  background: radial-gradient(circle, rgb(var(--ember)) 1.3px, transparent 1.8px) 0 50% / 9px 4px repeat-x;
+  transform-origin: left center;
+}
+@keyframes draw-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .draw-x { animation: draw-x 1400ms 600ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+
+/* Coast chart states */
+[data-chart-stop] circle {
+  fill: rgb(var(--card));
+  stroke: rgb(var(--ink) / 0.55);
+  transition: fill 300ms, stroke 300ms;
+}
+[data-chart-stop] text {
+  fill: rgb(var(--soft));
+  transition: fill 300ms;
+}
+[data-chart-stop][data-active] circle {
+  fill: rgb(var(--ember));
+  stroke: rgb(var(--ember));
+}
+[data-chart-stop][data-active] text {
+  fill: rgb(var(--ink));
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-chart-stop] circle, [data-chart-stop] text, [data-chart-step], [data-chart-label] { transition: none; }
+}
+
+/* Page transition (app/template.tsx) */
+@keyframes page-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-in { animation: page-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+
+/* Coastline story emphasis (desktop) and mobile route bar */
+@media (min-width: 1024px) {
+  [data-chart-step] {
+    opacity: 0.4;
+    transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-chart-step][data-active] {
+    opacity: 1;
+  }
+}
+[data-chart-label] {
+  color: rgb(var(--mute));
+  border-color: transparent;
+  transition: color 300ms, border-color 300ms, background-color 300ms;
+}
+[data-chart-label][data-active] {
+  color: rgb(var(--ink));
+  border-color: rgb(var(--ember) / 0.5);
+  background-color: rgb(var(--ember) / 0.1);
+}

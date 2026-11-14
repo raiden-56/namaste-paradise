@@ -18,12 +18,13 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: 72,
-          color: '#efe9de',
-          background: 'linear-gradient(180deg, #0f0e0d 0%, #2a1c16 48%, #a1532e 66%, #f4b071 70%, #62351f 72%, #0c0b0a 100%)',
+          color: '#eaf6f8',
+          backgroundColor: '#040a11',
+          backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(52,240,214,0.35), transparent 45%)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 30 }}>
-          <div style={{ width: 40, height: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, background: '#E07A3F' }} />
+          <div style={{ width: 40, height: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, background: '#34f0d6' }} />
           {brand.name}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>

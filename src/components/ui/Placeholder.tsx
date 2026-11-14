@@ -11,7 +11,7 @@ export function Placeholder({ label = 'Sample', className, onScene = false }: { 
     <span
       title="Placeholder — replace with verified business information before launch"
       className={cn(
-        'inline-flex h-6 items-center gap-1.5 rounded-[6px] border border-dashed px-2 font-mono text-[12px] leading-none',
+        'inline-flex h-6 items-center gap-1.5 rounded-full border border-dashed px-2.5 font-mono text-[11px] uppercase leading-none tracking-[0.08em]',
         onScene ? 'border-cream/30 text-cream/75' : 'border-ink/20 text-mute',
         className,
       )}

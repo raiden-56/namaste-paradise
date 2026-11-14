@@ -29,19 +29,19 @@ export default function PackagesPage() {
       />
       <section aria-label="All packages" className="py-20 sm:py-28">
         <div className="wrap space-y-6 md:space-y-8">
-          {activePackages.map((pkg) => (
+          {activePackages.map((pkg, i) => (
             <div key={pkg.id} data-reveal>
-              <PackageTicket pkg={pkg} headingLevel="h2" />
+              <PackageTicket pkg={pkg} headingLevel="h2" index={i} />
             </div>
           ))}
-          <div className="flex flex-col items-start justify-between gap-6 rounded-panel border border-ink/[0.08] bg-deep p-8 sm:p-10 md:flex-row md:items-center" data-reveal>
+          <div className="flex flex-col items-start justify-between gap-6 glass rounded-panel p-8 sm:p-10 md:flex-row md:items-center" data-reveal>
             <div>
               <h2 className="text-subtitle">Not sure which trip suits you</h2>
               <p className="mt-2 max-w-[34rem] text-[15px] leading-[1.6] text-soft">
                 Tell us who is travelling and what you would like to see. We will suggest the best experience for your day.
               </p>
             </div>
-            <BookButton packageId={NOT_SURE_PACKAGE} variant="primary" size="lg" className="shrink-0">
+            <BookButton packageId={NOT_SURE_PACKAGE} variant="glow" size="lg" className="shrink-0">
               Ask for a suggestion
             </BookButton>
           </div>

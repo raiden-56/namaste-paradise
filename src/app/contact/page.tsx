@@ -46,7 +46,7 @@ export default function ContactPage() {
                     <Icon className="h-[18px] w-[18px] text-mute" />
                     <span>
                       <span className="block text-[13px] text-mute">{title}</span>
-                      <span className="mt-0.5 block text-[16px] text-ink transition-colors duration-160 group-hover:text-ember-ink">{value}</span>
+                      <span className="mt-0.5 block text-[16px] text-ink transition-colors duration-160 group-hover:text-glow-ink">{value}</span>
                     </span>
                     <span className="hidden text-[13px] text-mute sm:block">{note}</span>
                   </a>

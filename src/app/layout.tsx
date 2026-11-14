@@ -5,7 +5,7 @@ import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp';
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { Providers } from '@/components/layout/Providers';
-import { THEME_KEY } from '@/config/theme';
+import { PointerFX } from '@/components/motion/PointerFX';
 import { ScrollEffects } from '@/components/motion/ScrollEffects';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { brand, site } from '@/config/brand';
@@ -13,16 +13,17 @@ import { localBusinessSchema, websiteSchema } from '@/utils/structuredData';
 import './globals.css';
 
 // Self-hosted from @fontsource (no build-time call to Google; served from our own domain).
-const serif = localFont({
-  src: '../../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2',
-  weight: '400',
-  variable: '--font-serif',
+// Unbounded — wide, rounded display face for headlines; Sora — geometric, very readable body text.
+const display = localFont({
+  src: '../../node_modules/@fontsource-variable/unbounded/files/unbounded-latin-wght-normal.woff2',
+  weight: '200 900',
+  variable: '--font-display',
   display: 'swap',
-  fallback: ['Georgia', 'serif'],
+  fallback: ['system-ui', 'sans-serif'],
 });
 const sans = localFont({
-  src: '../../node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2',
-  weight: '400 700',
+  src: '../../node_modules/@fontsource-variable/sora/files/sora-latin-wght-normal.woff2',
+  weight: '100 800',
   variable: '--font-sans',
   display: 'swap',
   fallback: ['system-ui', 'sans-serif'],
@@ -63,20 +64,15 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#161513',
+  themeColor: '#f6fafb',
 };
 
-/** Dusk (dark) is the default; switch to daybreak only if the visitor chose it. Runs before paint. */
-const themeScript = `try{if(localStorage.getItem('${THEME_KEY}')==='light')document.documentElement.classList.remove('dark')}catch(e){}`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en-IN" className={`dark ${serif.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en-IN" className={`${display.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <body>
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-control focus:bg-ink focus:px-4 focus:py-2 focus:text-page">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-page">
           Skip to content
         </a>
         <Providers>
@@ -86,6 +82,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <FloatingWhatsApp />
         </Providers>
         <ScrollEffects />
+        <PointerFX />
         <JsonLd data={[localBusinessSchema(), websiteSchema()]} />
       </body>
     </html>

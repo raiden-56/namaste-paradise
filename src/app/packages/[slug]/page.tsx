@@ -64,22 +64,22 @@ export default async function PackagePage({ params }: Props) {
             <h2 className="text-title">About this trip</h2>
             <p className="mt-6 text-[17px] leading-[1.7] text-soft">{pkg.description}</p>
 
-            <h3 className="mt-14 text-[24px]">Route</h3>
+            <h3 className="mt-14 font-display text-[19px] font-medium tracking-[-0.02em]">Route</h3>
             <RouteStops stops={pkg.route} animate="scroll" className="mt-6" />
 
-            <h3 className="mt-14 text-[24px]">Highlights</h3>
+            <h3 className="mt-14 font-display text-[19px] font-medium tracking-[-0.02em]">Highlights</h3>
             <ul className="mt-5">
               {pkg.highlights.map((h) => (
                 <li key={h} className="flex items-start gap-3 border-t border-ink/[0.08] py-3.5 text-[15px] text-ink">
-                  <Check className="mt-0.5 h-[18px] w-[18px] shrink-0 text-mute" strokeWidth={1.5} /> {h}
+                  <Check className="mt-0.5 h-[18px] w-[18px] shrink-0 text-glow" strokeWidth={2} /> {h}
                 </li>
               ))}
             </ul>
 
-            <h3 className="mt-14 text-[24px]">Best for</h3>
-            <p className="mt-3 text-[15px] text-soft">{pkg.bestFor.join(' · ')}</p>
+            <h3 className="mt-14 font-display text-[19px] font-medium tracking-[-0.02em]">Best for</h3>
+            <ul className="mt-4 flex flex-wrap gap-2">{pkg.bestFor.map((b) => (<li key={b} className="glass rounded-full px-4 py-1.5 text-[13px] text-ink">{b}</li>))}</ul>
 
-            <div className="mt-14 rounded-card border border-ember/30 bg-ember/[0.06] p-5">
+            <div className="mt-14 rounded-card border border-glow/30 bg-glow/[0.06] p-5">
               <h3 className="font-sans text-[15px] font-medium">Good to know</h3>
               <ul className="mt-3 space-y-2 text-[15px] leading-[1.6] text-soft">
                 {pkg.notes.map((n) => (
@@ -91,20 +91,20 @@ export default async function PackagePage({ params }: Props) {
           </div>
 
           <aside className="lg:col-span-5">
-            <div className="rounded-panel border border-ink/[0.08] bg-card p-6 sm:p-8 lg:sticky lg:top-24">
-              <p className="font-serif text-[24px]">At a glance</p>
+            <div className="glass relative overflow-hidden rounded-panel p-6 shadow-float sm:p-8 lg:sticky lg:top-28"><div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-glow/20 blur-3xl" />
+              <p className="font-display text-[20px] font-medium tracking-[-0.02em]">At a glance</p>
               <dl className="mt-4">
                 {facts.map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-center justify-between gap-4 border-t border-ink/[0.08] py-3.5 text-[15px]">
                     <dt className="flex items-center gap-2.5 text-soft">
-                      <Icon className="h-[18px] w-[18px] text-mute" strokeWidth={1.5} /> {label}
+                      <Icon className="h-[18px] w-[18px] text-glow" strokeWidth={1.5} /> {label}
                     </dt>
                     <dd className="text-right text-ink">{value}</dd>
                   </div>
                 ))}
               </dl>
               <div className="mt-6 space-y-3">
-                <BookButton packageId={pkg.id} variant="ember" size="lg" className="w-full" icon={<WhatsAppIcon />}>
+                <BookButton packageId={pkg.id} variant="glow" size="lg" className="w-full" icon={<WhatsAppIcon />}>
                   {pkg.ctaLabel}
                 </BookButton>
                 <a href={buildWhatsAppUrl(buildPackageEnquiry(pkg.name))} target="_blank" rel="noopener noreferrer" className={buttonClass('secondary', 'lg', 'w-full')}>

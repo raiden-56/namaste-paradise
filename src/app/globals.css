@@ -3,88 +3,127 @@
 @tailwind utilities;
 
 /* ------------------------------------------------------------------ */
-/* Monsoon dusk — one warm neutral ramp + one ember accent             */
-/* Dark is the default; "daybreak" is the optional light theme.        */
+/* Lagoon — light, airy sea-glass surfaces + deep-teal glow + warm sun */
+/* Light only. Photo scenes (hero, CTA) stay dark for contrast.        */
 /* ------------------------------------------------------------------ */
 @layer base {
   :root {
-    /* Daybreak (light) */
-    --deep: 239 233 223;
-    --page: 247 244 238;
-    --card: 253 251 247;
-    --raised: 239 233 223;
-    --ink: 31 27 22;
-    --soft: 94 85 74;
-    --mute: 118 109 97;
-    --ember: 184 83 31;
-    --ember-ink: 160 70 22;
-    --on-ember: 255 255 255;
+    --deep: 230 240 243; /* tinted bands (tours, journey, footer) */
+    --page: 246 250 251;
+    --card: 255 255 255;
+    --raised: 236 244 246;
+    --ink: 7 24 36;
+    --soft: 60 84 98;
+    --mute: 92 114 127;
+    --glow: 0 140 126;
+    --glow-ink: 0 112 101;
+    --on-glow: 255 255 255;
+    --sun: 196 82 30;
+    --violet: 88 72 222;
     color-scheme: light;
-  }
-
-  .dark {
-    /* Dusk (default) */
-    --deep: 18 17 15;
-    --page: 22 21 19;
-    --card: 28 26 24;
-    --raised: 38 36 33;
-    --ink: 239 233 222;
-    --soft: 170 163 152;
-    --mute: 138 132 122;
-    --ember: 224 122 63;
-    --ember-ink: 234 145 94;
-    --on-ember: 22 21 19;
-    color-scheme: dark;
   }
 
   html {
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 88px;
+    scroll-padding-top: 96px;
   }
   @media (prefers-reduced-motion: no-preference) {
     html { scroll-behavior: smooth; }
   }
 
   body {
-    @apply bg-page font-sans text-[15px] leading-[1.6] text-ink antialiased;
+    @apply bg-page font-sans text-[15px] leading-[1.65] text-ink antialiased;
     overflow-x: clip;
   }
 
   h1, h2, h3 {
-    @apply font-serif font-normal text-ink;
+    @apply font-display font-medium text-ink;
   }
 
   ::selection {
-    background: rgb(var(--ember) / 0.3);
+    background: rgb(var(--glow) / 0.3);
   }
 
   :focus-visible {
-    outline: 2px solid rgb(var(--ember));
+    outline: 2px solid rgb(var(--glow));
     outline-offset: 3px;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 
-  .dark input[type='date']::-webkit-calendar-picker-indicator {
-    filter: invert(0.85);
-  }
 }
 
 @layer components {
   .wrap {
-    @apply mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-site px-4 sm:px-8 lg:px-12;
   }
 
-  /* Section kicker: small, sentence case, ember ink — no tracked capitals */
+  /* HUD label: mono, small, with a glowing square */
   .kicker {
-    @apply font-mono text-[13px] leading-5 text-ember-ink;
+    @apply inline-flex items-center gap-2.5 font-mono text-[12px] uppercase leading-5 tracking-[0.16em] text-glow-ink;
+  }
+  .kicker::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
+    background: rgb(var(--glow));
+    box-shadow: 0 0 12px rgb(var(--glow) / 0.9);
   }
 
   .hairline {
     border-color: rgb(var(--ink) / 0.09);
   }
 
+  /* Frosted panel */
+  .glass {
+    background: rgb(var(--card) / 0.7);
+    border: 1px solid rgb(var(--ink) / 0.08);
+    box-shadow: 0 1px 2px rgb(7 24 36 / 0.04), 0 12px 32px -16px rgb(7 24 36 / 0.12);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    backdrop-filter: blur(18px) saturate(1.3);
+  }
+  .glass-scene {
+    background: rgb(3 7 12 / 0.45);
+    border: 1px solid rgb(234 246 248 / 0.14);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
+  }
+
+  /* Faint navigation grid */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgb(var(--ink) / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--ink) / 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .grid-bg-scene {
+    background-image:
+      linear-gradient(rgb(234 246 248 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(234 246 248 / 0.06) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* Bright gradient — only on dark photo scenes */
+  .text-glow-gradient {
+    background: linear-gradient(100deg, #34f0d6 0%, #9ff7ea 45%, #8474ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Deep gradient — on light surfaces */
+  .text-ink-gradient {
+    background: linear-gradient(100deg, rgb(var(--glow)) 0%, rgb(var(--violet)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(var(--ink) / 0.22);
+  }
+
   .field {
-    @apply h-11 w-full rounded-control border bg-raised px-3.5 text-[15px] text-ink placeholder:text-mute;
+    @apply h-12 w-full rounded-[14px] border bg-raised/70 px-4 text-[15px] text-ink placeholder:text-mute;
     border-color: rgb(var(--ink) / 0.1);
     transition: border-color 160ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 160ms cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -93,11 +132,11 @@
   }
   .field:focus {
     outline: none;
-    border-color: rgb(var(--ember) / 0.7);
-    box-shadow: 0 0 0 3px rgb(var(--ember) / 0.18);
+    border-color: rgb(var(--glow) / 0.7);
+    box-shadow: 0 0 0 4px rgb(var(--glow) / 0.15);
   }
   .field[aria-invalid='true'] {
-    border-color: rgb(var(--ember));
+    border-color: rgb(var(--sun));
   }
 
   .link {
@@ -106,38 +145,83 @@
     transition: text-decoration-color 160ms;
   }
   .link:hover {
-    text-decoration-color: rgb(var(--ember));
+    text-decoration-color: rgb(var(--glow));
   }
 
-  /* The signature: an ember dashed route line */
-  .route-line {
-    stroke: rgb(var(--ember));
-    stroke-dasharray: 2 7;
-    stroke-linecap: round;
-    fill: none;
+  /* Cursor spotlight: [data-spot] gets --mx / --my from <PointerFX/> */
+  .spot {
+    position: relative;
+    isolation: isolate;
+  }
+  .spot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(var(--glow) / 0.14), transparent 60%);
+  }
+  .spot:hover::before {
+    opacity: 1;
+  }
+  /* glowing border that follows the cursor */
+  .spot-border::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgb(var(--glow) / 0.9), transparent 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  .spot-border:hover::after {
+    opacity: 1;
+  }
+
+  [data-tilt] {
+    transform-style: preserve-3d;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  [data-tilt][data-tilting] {
+    transition: transform 80ms linear;
+  }
+  [data-magnetic] {
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Route line — glowing dashes */
+  .route-dots {
+    height: 2px;
+    background: repeating-linear-gradient(90deg, rgb(var(--glow)) 0 8px, transparent 8px 14px);
+    box-shadow: 0 0 10px rgb(var(--glow) / 0.6);
+    transform-origin: left center;
   }
 }
 
 /* ------------------------------------------------------------------ */
 /* Motion                                                              */
-/* CSS-only hero entrance (works before/without JS, good for LCP/SEO). */
-/* Scroll reveals & parallax are added by <ScrollEffects/> with GSAP.  */
 /* ------------------------------------------------------------------ */
 @keyframes rise {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: none; }
+  from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
 }
 @keyframes scene-in {
-  from { transform: scale(1.08); }
+  from { transform: scale(1.12); }
   to { transform: none; }
 }
-@keyframes draw {
-  from { stroke-dashoffset: var(--len, 900); }
-  to { stroke-dashoffset: 0; }
-}
-@keyframes glint-drift {
-  from { transform: translateX(0); }
-  to { transform: translateX(-400px); }
+@keyframes draw-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 @keyframes scroll-cue {
   0% { transform: scaleY(0); transform-origin: top; }
@@ -145,81 +229,53 @@
   55% { transform: scaleY(1); transform-origin: bottom; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .rise { animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .rise-1 { animation-delay: 80ms; }
-  .rise-2 { animation-delay: 140ms; }
-  .rise-3 { animation-delay: 200ms; }
-  .rise-4 { animation-delay: 260ms; }
-  .rise-5 { animation-delay: 420ms; }
-  .scene-in { animation: scene-in 2400ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .draw-in { stroke-dasharray: var(--len, 900); animation: draw 1800ms 500ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .glint-drift { animation: glint-drift 40s linear infinite; }
-  .scroll-cue { animation: scroll-cue 2400ms cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-}
-
-/* Route dots (HTML version of the signature line) */
-.route-dots {
-  height: 4px;
-  background: radial-gradient(circle, rgb(var(--ember)) 1.3px, transparent 1.8px) 0 50% / 9px 4px repeat-x;
-  transform-origin: left center;
-}
-@keyframes draw-x {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .draw-x { animation: draw-x 1400ms 600ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-}
-
-/* Coast chart states */
-[data-chart-stop] circle {
-  fill: rgb(var(--card));
-  stroke: rgb(var(--ink) / 0.55);
-  transition: fill 300ms, stroke 300ms;
-}
-[data-chart-stop] text {
-  fill: rgb(var(--soft));
-  transition: fill 300ms;
-}
-[data-chart-stop][data-active] circle {
-  fill: rgb(var(--ember));
-  stroke: rgb(var(--ember));
-}
-[data-chart-stop][data-active] text {
-  fill: rgb(var(--ink));
-}
-@media (prefers-reduced-motion: reduce) {
-  [data-chart-stop] circle, [data-chart-stop] text, [data-chart-step], [data-chart-label] { transition: none; }
-}
-
-/* Page transition (app/template.tsx) */
 @keyframes page-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .page-in { animation: page-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
 }
 
-/* Coastline story emphasis (desktop) and mobile route bar */
-@media (min-width: 1024px) {
-  [data-chart-step] {
-    opacity: 0.4;
-    transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  [data-chart-step][data-active] {
-    opacity: 1;
-  }
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .rise-1 { animation-delay: 100ms; }
+  .rise-2 { animation-delay: 200ms; }
+  .rise-3 { animation-delay: 300ms; }
+  .rise-4 { animation-delay: 420ms; }
+  .rise-5 { animation-delay: 600ms; }
+  .scene-in { animation: scene-in 2800ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .draw-x { animation: draw-x 1600ms 700ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .scroll-cue { animation: scroll-cue 2400ms cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+  .page-in { animation: page-in 500ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .scan-line { animation: scan 7s linear infinite; }
+  .marquee-pause:hover .animate-marquee,
+  .marquee-pause:hover .animate-marquee-rev { animation-play-state: paused; }
 }
-[data-chart-label] {
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-marquee-rev, .animate-ping, .animate-sweep, .animate-float, .animate-blink { animation: none !important; }
+}
+
+/* Coastline (horizontal journey) node states */
+[data-hscroll-node] .node-dot {
+  background: rgb(var(--page));
+  border-color: rgb(var(--ink) / 0.3);
+  transition: background-color 300ms, border-color 300ms, box-shadow 300ms;
+}
+[data-hscroll-node] .node-label {
   color: rgb(var(--mute));
-  border-color: transparent;
-  transition: color 300ms, border-color 300ms, background-color 300ms;
+  transition: color 300ms;
 }
-[data-chart-label][data-active] {
+[data-hscroll-node][data-active] .node-dot {
+  background: rgb(var(--glow));
+  border-color: rgb(var(--glow));
+  box-shadow: 0 0 16px rgb(var(--glow) / 0.8);
+}
+[data-hscroll-node][data-active] .node-label {
   color: rgb(var(--ink));
-  border-color: rgb(var(--ember) / 0.5);
-  background-color: rgb(var(--ember) / 0.1);
 }
+
+/* Hide scrollbars on horizontal rails */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

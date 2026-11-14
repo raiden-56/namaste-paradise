@@ -12,17 +12,17 @@ import { todayISO, validateBooking, type BookingErrors } from '@/utils/validatio
 import { buildBookingMessage, buildWhatsAppUrl, openWhatsApp } from '@/utils/whatsapp';
 
 const chevron =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a847a' stroke-width='1.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")";
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e8896' stroke-width='1.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")";
 
 function Field({ id, label, error, hint, children }: { id: string; label: string; error?: string; hint?: string; children: ReactNode }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-[14px] font-medium text-ink">
+      <label htmlFor={id} className="mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-soft">
         {label}
       </label>
       {children}
       {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-2 flex items-center gap-2 text-[13px] text-ember-ink">
+        <p id={`${id}-error`} role="alert" className="mt-2 flex items-center gap-2 text-[13px] text-sun">
           <AlertCircle className="h-4 w-4 shrink-0" strokeWidth={1.5} /> {error}
         </p>
       ) : hint ? (
@@ -36,7 +36,7 @@ function Stepper({ id, value, min, label, onChange }: { id: string; value: numbe
   const max = whatsappConfig.maxGuests;
   return (
     <div className="field flex items-center justify-between !px-1">
-      <button type="button" onClick={() => onChange(Math.max(min, value - 1))} disabled={value <= min} aria-label={`Fewer ${label}`} className="grid h-9 w-9 place-items-center rounded-[8px] text-soft transition-colors duration-160 hover:bg-ink/5 hover:text-ink disabled:opacity-30">
+      <button type="button" onClick={() => onChange(Math.max(min, value - 1))} disabled={value <= min} aria-label={`Fewer ${label}`} className="grid h-9 w-9 place-items-center rounded-full text-soft transition-colors duration-160 hover:bg-ink/5 hover:text-ink disabled:opacity-30">
         <Minus className="h-4 w-4" strokeWidth={1.5} />
       </button>
       <input
@@ -49,7 +49,7 @@ function Stepper({ id, value, min, label, onChange }: { id: string; value: numbe
         onChange={(e) => onChange(Math.max(min, Math.floor(Number(e.target.value) || 0)))}
         className="w-12 bg-transparent text-center font-mono text-[15px] tabular-nums text-ink outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
       />
-      <button type="button" onClick={() => onChange(Math.min(max, value + 1))} aria-label={`More ${label}`} className="grid h-9 w-9 place-items-center rounded-[8px] text-soft transition-colors duration-160 hover:bg-ink/5 hover:text-ink">
+      <button type="button" onClick={() => onChange(Math.min(max, value + 1))} aria-label={`More ${label}`} className="grid h-9 w-9 place-items-center rounded-full text-soft transition-colors duration-160 hover:bg-ink/5 hover:text-ink">
         <Plus className="h-4 w-4" strokeWidth={1.5} />
       </button>
     </div>
@@ -105,14 +105,14 @@ export function BookingForm({ initialPackageId = '', compact = false }: { initia
   if (sentUrl) {
     return (
       <div role="status" aria-live="polite" className="py-2">
-        <span className="grid h-12 w-12 place-items-center rounded-full bg-raised text-ink">
+        <span className="grid h-12 w-12 place-items-center rounded-full bg-glow text-on-glow shadow-glow">
           <WhatsAppIcon className="h-6 w-6" />
         </span>
         <h3 className="mt-6 text-subtitle">Your request is ready in WhatsApp</h3>
         <p className="mt-3 text-soft">
           We opened WhatsApp with your details filled in. Press send to share them with our team.
         </p>
-        <div className="mt-6 rounded-card border border-ember/30 bg-ember/[0.06] p-4 text-[14px] leading-[1.6] text-ink">
+        <div className="mt-6 rounded-card border border-glow/30 bg-glow/[0.06] p-4 text-[14px] leading-[1.6] text-ink">
           This is not a confirmed booking yet. Your trip is confirmed only after our team replies on WhatsApp with availability, timing,
           pricing and boarding details.
         </div>
@@ -138,7 +138,7 @@ export function BookingForm({ initialPackageId = '', compact = false }: { initia
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-5">
       {!isWhatsAppConfigured && process.env.NODE_ENV === 'development' && (
-        <p className="rounded-control border border-dashed border-ink/20 p-3 font-mono text-[12px] text-mute">
+        <p className="rounded-[14px] border border-dashed border-ink/20 p-3 font-mono text-[12px] text-mute">
           Dev note: add the real number in src/config/whatsapp.ts
         </p>
       )}
@@ -197,7 +197,7 @@ export function BookingForm({ initialPackageId = '', compact = false }: { initia
       </Field>
 
       <div className="pt-1">
-        <button type="submit" className={buttonClass('ember', 'lg', 'w-full')}>
+        <button type="submit" className={buttonClass('glow', 'lg', 'w-full')}>
           <WhatsAppIcon /> Send request on WhatsApp
         </button>
         <p className="mt-3 text-center text-[13px] text-mute">No online payment. Confirmed only after our team replies</p>

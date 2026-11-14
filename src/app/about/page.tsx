@@ -63,11 +63,11 @@ export default function AboutPage() {
           <h2 id="promises-title" className="text-title" data-reveal>
             Three things we hold to
           </h2>
-          <ol className="mt-12 grid gap-x-10 md:grid-cols-3">
+          <ol className="mt-12 grid gap-4 md:grid-cols-3">
             {promises.map((p, i) => (
-              <li key={p.title} className="border-t border-ink/[0.08] py-6" data-reveal>
-                <p className="font-mono text-[13px] text-ember-ink">{String(i + 1).padStart(2, '0')}</p>
-                <h3 className="mt-3 text-[24px] leading-[1.2]">{p.title}</h3>
+              <li key={p.title} data-spot="" className="spot spot-border relative overflow-hidden rounded-card border border-ink/[0.08] bg-card p-7" data-reveal>
+                <p className="font-display text-[40px] font-semibold leading-none tracking-[-0.05em] text-ink-gradient">{String(i + 1).padStart(2, '0')}</p>
+                <h3 className="mt-6 font-display text-[19px] font-medium leading-[1.2] tracking-[-0.02em]">{p.title}</h3>
                 <p className="mt-2 text-[15px] leading-[1.6] text-soft">{p.text}</p>
               </li>
             ))}

@@ -14,10 +14,10 @@ export default function NotFound() {
       </div>
       <div className="absolute inset-0 -z-10 bg-night/40" />
       <div className="wrap">
-        <p className="font-mono text-[13px] text-[#e88d58]">404</p>
+        <p className="font-mono text-[13px] text-aqua">404</p>
         <h1 className="mt-4 max-w-[36rem] text-hero text-cream">This page drifted out to sea</h1>
         <p className="mt-5 max-w-[30rem] text-[18px] text-cream/75">The link may be broken or the page may have moved.</p>
-        <Link href="/" className={buttonClass('ember', 'lg', 'mt-9')}>
+        <Link href="/" className={buttonClass('glow', 'lg', 'mt-9')}>
           Back to shore <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
         </Link>
       </div>

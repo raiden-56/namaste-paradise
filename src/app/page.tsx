@@ -9,6 +9,7 @@ import { Gallery } from '@/components/sections/Gallery';
 import { Hero } from '@/components/sections/Hero';
 import { Journey } from '@/components/sections/Journey';
 import { Safety } from '@/components/sections/Safety';
+import { Stats } from '@/components/sections/Stats';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Tours } from '@/components/sections/Tours';
 import { WhyUs } from '@/components/sections/WhyUs';
@@ -26,6 +27,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Stats />
       <Experiences />
       <Tours />
       <Coastline />

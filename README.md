@@ -31,5 +31,5 @@ To add a photo, put an optimized `.webp` in `public/images/` and add an entry in
 
 ## Photos
 
-- `npc-*` files: the business's own photos, from namasteparadisecruise.com.
+- `npc-*`, `coast-*` and `gokarna-sunset` files: the business's own photos (from namasteparadisecruise.com and trip photos taken in Nov 2026).
 - All other location photos: Wikimedia Commons, under CC BY / CC BY-SA / CC0 / public domain. They're credited on `/policies#credits`, which the licences require, so keep that page.

@@ -49,4 +49,34 @@ export const testimonials: Testimonial[] = [
       'Amazing experience. Staff were cooperative and friendly, and every activity was explained properly. At the end of the journey they gave us biscuits and water bottles, which was very generous.',
     isPlaceholder: false,
   },
+  {
+    id: 'yogesh',
+    name: 'Yogesh N.',
+    origin: 'Google review',
+    review:
+      'The pricing is very reasonable for the 3–4 hours of fun you get on the boat. They took us on a beach-hopping ride and explained each beach along the way, then stopped at Half Moon Beach, where everyone could swim, kayak and try snorkeling — families with kids loved it. The return journey with the red sky and setting sun was breathtaking.',
+    isPlaceholder: false,
+  },
+  {
+    id: 'praveen',
+    name: 'Shetty P.',
+    origin: 'Google review',
+    review:
+      'A wonderful day with family. A professional team, and all the activities are nice and properly organised. Thanks to the Namaste Paradise team for a memorable day.',
+    isPlaceholder: false,
+  },
+  {
+    id: 'sushant',
+    name: 'Sushant B.',
+    origin: 'Google review',
+    review: 'Best enjoyment — loved the driver’s cooperation. He explained everything about the points and we had a great experience.',
+    isPlaceholder: false,
+  },
+  {
+    id: 'sayinath',
+    name: 'Sayinath P.',
+    origin: 'Google review',
+    review: 'Ride this cruise to see the sunset. Awesome experience, great service and great music.',
+    isPlaceholder: false,
+  },
 ];

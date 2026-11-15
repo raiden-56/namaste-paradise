@@ -75,7 +75,7 @@ export const destinations: Destination[] = [
     special: 'Fishing harbour, river backwaters and the lighthouse, all in the first minutes of the ride.',
     routeStatus: 'on-route',
     routeNote: 'Start of every trip.',
-    image: photo('aghanashini-jetty-boats'),
+    image: photo('npc-boat-river'),
     chart: { x: 214, y: 522 },
   },
 ];

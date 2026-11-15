@@ -24,7 +24,7 @@ export default function PackagesPage() {
         kicker="Tour packages"
         title="Choose your day on the water"
         description="From a one-hour sightseeing ride to a three-hour beach-hopping trip with kayaking and snorkeling. All trips start at Tadadi."
-        image={photo('npc-cruise-boat')}
+        image={photo('npc-boat-beach')}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Tour packages' }]}
       />
       <section aria-label="All packages" className="py-20 sm:py-28">

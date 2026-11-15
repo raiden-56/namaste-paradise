@@ -30,7 +30,7 @@ export const faqs: FaqItem[] = [
     id: 'activities',
     question: 'What activities are included in the premium package?',
     answer:
-      'Boat ride, kayaking, swimming, sea diving and snorkeling, plus beach football, frisbee, volleyball and badminton at the beach stop. Jet ski, banana and bumper rides are not included and can be added separately.',
+      'Boat ride, kayaking, swimming, sea diving and snorkeling, plus beach football, frisbee, volleyball and badminton at the beach stop. Jet ski, banana and bumper rides are not included and can be added separately (the bumper ride is ₹500).',
     needsConfirmation: false,
   },
   {
@@ -70,7 +70,7 @@ export const faqs: FaqItem[] = [
     id: 'how-to-book',
     question: 'How do I book?',
     answer:
-      'Use any Book button, choose a package, date, time and number of guests, and we open WhatsApp with your request filled in. Press send. Your booking is confirmed when our team replies. You can also call +91 95358 71114 or +91 95359 71114 — our office is open 24×7.',
+      'Use any Book button, choose a package, date, time and number of guests, and we open WhatsApp with your request filled in. Press send. Your booking is confirmed when our team replies. You can also call +91 95358 71114, +91 95359 71114 or +91 88800 01757 — our office is open 24×7.',
     needsConfirmation: false,
   },
   {

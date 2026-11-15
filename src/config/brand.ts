@@ -31,7 +31,7 @@ export const site = {
 } as const;
 
 export const contact = {
-  phones: ['+91 95358 71114', '+91 95359 71114'],
+  phones: ['+91 95358 71114', '+91 95359 71114', '+91 88800 01757'],
   phoneDisplay: '+91 95358 71114',
   email: 'namasteparadisecruise@gmail.com',
   emergencyContact: '+91 95358 71114',
@@ -44,8 +44,8 @@ export const social = {
   instagramHandle: '@namasteparadisecruise',
   facebook: 'https://www.facebook.com/NPcruise',
   /** Google Business Profile — reviews */
-  googleReviews: 'https://www.google.com/maps/search/?api=1&query=Namaste%20Paradise%20Cruise%20%26%20Watersports%20Tadadi%20Gokarna',
-  googleRating: { score: '5.0', count: 457, asOf: 'November 2026' },
+  googleReviews: 'https://maps.google.com/?cid=7906633286781360130',
+  googleRating: { score: '5.0', count: 558, asOf: 'November 2026' },
 } as const;
 
 export const boarding = {

@@ -17,7 +17,7 @@ export default function GalleryPage() {
         kicker="Gallery"
         title="The coast, frame by frame"
         description="Boat rides, mini cruises, beaches and sunsets along the Gokarna coastline."
-        image={photo('om-beach-sunset')}
+        image={photo('coast-rocks')}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Gallery' }]}
       />
       <Gallery filters heading={false} />

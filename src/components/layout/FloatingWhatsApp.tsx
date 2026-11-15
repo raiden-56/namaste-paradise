@@ -47,7 +47,7 @@ export function FloatingWhatsApp() {
         aria-label="Back to top"
         tabIndex={showTop ? 0 : -1}
         className={cn(
-          'grid h-11 w-11 place-items-center rounded-full glass text-ink shadow-float transition-[opacity,transform,border-color] duration-400 ease-out hover:border-glow/50',
+          'relative z-10 grid h-11 w-11 place-items-center rounded-full glass text-ink shadow-float transition-[opacity,transform,border-color] duration-400 ease-out hover:border-glow/50',
           showTop ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0',
         )}
       >
@@ -61,7 +61,7 @@ export function FloatingWhatsApp() {
         title="Chat on WhatsApp"
         className="relative grid h-14 w-14 place-items-center rounded-full bg-[#1E8E50] text-white shadow-[0_10px_30px_-6px_rgb(37_211_102/0.55)] transition-[background-color,transform] duration-160 hover:scale-105 hover:bg-[#1A7C46] active:scale-[0.96]"
       >
-        <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-[#25D366]/30 [animation-duration:2.6s]" />
+        <span aria-hidden className="pointer-events-none absolute inset-0 animate-ping rounded-full bg-[#25D366]/30 [animation-duration:2.6s]" />
         <WhatsAppIcon className="relative h-6 w-6" />
       </a>
     </div>

@@ -26,7 +26,7 @@ export default function AboutPage() {
         kicker="About us"
         title="Water sports and mini cruises from Tadadi"
         description="We share the joy of the sea along the coastline of Gokarna and Paradise Beach."
-        image={photo('main-beach-aerial')}
+        image={photo('coast-palm-beach')}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About us' }]}
       />
 
@@ -34,7 +34,7 @@ export default function AboutPage() {
         <div className="wrap grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div data-parallax-root="" className="relative aspect-[4/5] overflow-hidden rounded-panel bg-card lg:col-span-5" data-reveal>
             <div className="absolute -inset-y-[10%] inset-x-0" data-parallax="0.08">
-              <Media image={photo('npc-cruise-boat')} sizes="(min-width: 1024px) 40vw, 100vw" className="object-[38%_center]" />
+              <Media image={photo('npc-boat-kayaks')} sizes="(min-width: 1024px) 40vw, 100vw" className="object-[38%_center]" />
             </div>
           </div>
           <div className="lg:col-span-7" data-reveal>
@@ -42,8 +42,9 @@ export default function AboutPage() {
             <h2 className="text-title">The thrill of the sea, the calm of the coast</h2>
             <div className="mt-6 space-y-5 text-[17px] leading-[1.7] text-soft">
               <p>
-                {brand.legalName} runs mini cruises and water sports from Tadadi, where the Aghanashini river meets the Arabian Sea. Our
-                trips combine the excitement of the water with the quiet beauty of Gokarna’s coves — Paradise, Half Moon and Om Beach.
+                {brand.legalName} is the largest mini cruise operator in Gokarna, running cruises and water sports from Tadadi, where the
+                Aghanashini river meets the Arabian Sea. Our trips combine the thrill of water sports with the calm beauty of Gokarna’s
+                coves — Paradise, Half Moon and Om Beach.
               </p>
               <p>
                 On board, our crew explain each point along the way, and our instructors run kayaking, snorkeling and water sports with safety

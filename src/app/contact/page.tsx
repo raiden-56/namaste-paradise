@@ -1,4 +1,4 @@
-import { Clock, Instagram, Mail, PhoneCall } from 'lucide-react';
+import { Clock, Facebook, Instagram, Mail, Phone, PhoneCall } from 'lucide-react';
 import { BookingForm } from '@/components/booking/BookingForm';
 import { Boarding } from '@/components/sections/Boarding';
 import { FAQ } from '@/components/sections/FAQ';
@@ -19,7 +19,9 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   const channels = [
     { icon: WhatsAppIcon, title: 'WhatsApp', value: contact.phoneDisplay, href: buildWhatsAppUrl(), note: 'Fastest way to book' },
+    { icon: Phone, title: 'Call — office open 24×7', value: contact.phones.join(' · '), href: `tel:${contact.phones[0].replace(/\s/g, '')}`, note: 'Call any time' },
     { icon: Instagram, title: 'Instagram', value: social.instagramHandle, href: social.instagram, note: 'Trips and updates' },
+    { icon: Facebook, title: 'Facebook', value: 'facebook.com/NPcruise', href: social.facebook, note: 'Photos and updates' },
     ...(contact.email ? [{ icon: Mail, title: 'Email', value: contact.email, href: `mailto:${contact.email}`, note: 'Group enquiries' }] : []),
   ];
 
@@ -29,7 +31,7 @@ export default function ContactPage() {
         kicker="Contact"
         title="Plan your day at sea"
         description="Send a request below. It opens WhatsApp with everything filled in, and a person from our team replies."
-        image={photo('npc-sea-sun')}
+        image={photo('npc-boat-river')}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />
 
